@@ -13,6 +13,6 @@
  update.onclick=()=>{if(registration?.waiting){registration.waiting.postMessage({type:'ACTIVATE_UPDATE'})}};
  if('serviceWorker' in navigator){
   navigator.serviceWorker.addEventListener('controllerchange',()=>{if(reloading)return;if(update.dataset.pending==='1'){reloading=true;location.reload()}else{ready=true;connection()}});
-  navigator.serviceWorker.register('./sw.js').then(async reg=>{registration=reg;const showUpdate=()=>{update.hidden=false;update.dataset.pending='1'};if(reg.waiting)showUpdate();reg.addEventListener('updatefound',()=>{const worker=reg.installing;worker?.addEventListener('statechange',()=>{if(worker.state==='installed'&&navigator.serviceWorker.controller)showUpdate()})});await navigator.serviceWorker.ready;ready=true;connection()}).catch(()=>{status.textContent='오프라인 저장 실패 · 온라인 학습은 가능합니다'});
+  navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(async reg=>{registration=reg;const showUpdate=()=>{update.hidden=false;update.dataset.pending='1'};if(reg.waiting)showUpdate();reg.addEventListener('updatefound',()=>{const worker=reg.installing;worker?.addEventListener('statechange',()=>{if(worker.state==='installed'&&navigator.serviceWorker.controller)showUpdate()})});reg.update().catch(()=>{});await navigator.serviceWorker.ready;ready=true;connection()}).catch(()=>{status.textContent='오프라인 저장 실패 · 온라인 학습은 가능합니다'});
  }else status.textContent='이 브라우저는 온라인으로 이용하세요';
 })();
