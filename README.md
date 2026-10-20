@@ -1,5 +1,10 @@
 # 집중 회상
 
+현재 첫 화면은 **10월 22일 뉴스큐레이션**: 12단원, 48문제, 배우기·직접 쓰기·모의시험·짝맞추기.
+화요일 생활속의 물리·GMSW는 [기존 학습 화면](tuesday.html)에 보존했습니다.
+
+[REA를 이용한 Openlet 분석 및 재구현 기록](REVERSE_ENGINEERING.md).
+
 시험 전 기초 설명, 회상 연습, 서술형 자기점검, 오답 복습용 PWA.
 
 - 빌드 없는 HTML/CSS/JavaScript. GitHub Pages로 루트 전체를 배포합니다.
